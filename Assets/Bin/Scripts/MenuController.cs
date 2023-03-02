@@ -9,7 +9,11 @@ public class MenuController : MonoBehaviour
     [SerializeField] private CanvasController CCont;
     void Start()
     {
-        
+        if (PlayerPrefs.GetFloat("Music") != null)
+        {
+            music.value = PlayerPrefs.GetFloat("Music");
+            world.value = PlayerPrefs.GetFloat("World");
+        }
     }
 
     // Update is called once per frame
@@ -27,6 +31,7 @@ public class MenuController : MonoBehaviour
     {
         PlayerPrefs.SetFloat("Music", music.value);
         PlayerPrefs.SetFloat("World", world.value);
+        PlayerPrefs.Save();
         this.gameObject.SetActive(false);
     }
 }
